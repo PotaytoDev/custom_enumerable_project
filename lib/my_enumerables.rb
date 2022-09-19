@@ -46,6 +46,31 @@ module Enumerable
 
     any_true
   end
+
+  def my_none?(&block)
+    none_true = true
+
+    my_each do |element|
+      if block.call(element)
+        none_true = false
+        break
+      end
+    end
+
+    none_true
+  end
+
+  def my_count(&block)
+    return length unless block_given?
+
+    number_of_elements_that_match = 0
+
+    my_each do |element|
+      number_of_elements_that_match += 1 if block.call(element)
+    end
+
+    number_of_elements_that_match
+  end
 end
 
 # You will first have to define my_each
