@@ -33,6 +33,19 @@ module Enumerable
 
     all_true
   end
+
+  def my_any?(&block)
+    any_true = false
+
+    my_each do |element|
+      if block.call(element)
+        any_true = true
+        break
+      end
+    end
+
+    any_true
+  end
 end
 
 # You will first have to define my_each
