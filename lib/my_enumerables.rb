@@ -71,6 +71,26 @@ module Enumerable
 
     number_of_elements_that_match
   end
+
+  def my_map(&block)
+    new_array = []
+
+    my_each do |element|
+      new_array.push(block.call(element))
+    end
+
+    new_array
+  end
+
+  def my_inject(initial_value, &block)
+    total = initial_value
+
+    my_each do |element|
+      total = block.call(total, element)
+    end
+
+    total
+  end
 end
 
 # You will first have to define my_each
