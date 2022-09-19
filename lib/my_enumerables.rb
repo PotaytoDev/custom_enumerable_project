@@ -10,6 +10,16 @@ module Enumerable
 
     self
   end
+
+  def my_select(&block)
+    filtered_array = []
+
+    my_each do |element|
+      filtered_array.push(element) if block.call(element)
+    end
+
+    filtered_array
+  end
 end
 
 # You will first have to define my_each
