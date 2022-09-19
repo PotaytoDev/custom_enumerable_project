@@ -20,6 +20,19 @@ module Enumerable
 
     filtered_array
   end
+
+  def my_all?(&block)
+    all_true = true
+
+    my_each do |element|
+      unless block.call(element)
+        all_true = false
+        break
+      end
+    end
+
+    all_true
+  end
 end
 
 # You will first have to define my_each
